@@ -4,24 +4,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace VidzGabriel.API.Controllers
+namespace VidzMike.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
+        // GET http://localhost:5000/api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var sArray = new string[] { "Gabriel", "Souza", "Luz" };
+            return sArray;
         }
 
-        // GET api/values/5
+        // GET http://localhost:5000/api/values/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            var sArray = new string[] { "Gabriel", "Soares", "Luz" };
+             if (id > (sArray.Length - 1))
+                return "O valor digitado é maior do que o disponível";
+            
+            return sArray[id];
         }
 
         // POST api/values
